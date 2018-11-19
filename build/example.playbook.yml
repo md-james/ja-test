@@ -1,0 +1,24 @@
+---
+
+- name: Example Playbook
+  hosts: all
+  connection: ssh
+  
+  tasks:
+    - name: remove current directory
+      file:
+        state: absent
+        path: /var/www/lighttpd/ansible
+
+    - name: Creates directory
+      file: path=/var/www/lighttpd/ansible state=directory
+
+    - set_fact: env_var="{{ lookup('env','WORKSPACE') }}"
+
+    - name: deploy repository
+      copy:
+        src: "{{ env_var }}"
+        dest: /var/www/lighttpd/ansible/
+        owner: vw
+        group: vw
+        mode: 0644
