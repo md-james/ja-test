@@ -22,3 +22,8 @@
         owner: vw
         group: vw
         mode: 0644
+ 
+    - name: remove 'build' directory
+      file:
+        state: absent
+        path: /var/www/lighttpd/ansible/test/build
