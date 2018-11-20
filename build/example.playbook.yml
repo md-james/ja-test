@@ -27,3 +27,8 @@
       file:
         state: absent
         path: /var/www/lighttpd/ansible/test/build
+        
+    - name: remove '.git' directory
+      file:
+        state: absent
+        path: /var/www/lighttpd/ansible/test/.git
