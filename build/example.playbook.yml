@@ -16,13 +16,10 @@
     - set_fact: env_var="{{ lookup('env','WORKSPACE') }}"
 
     - name: deploy repository
-      copy:
+      synchronize:
         src: "{{ env_var }}"
         dest: /var/www/lighttpd/ansible/
-        owner: vw
-        group: vw
-        mode: 0644
- 
+    
     - name: remove 'build' directory
       file:
         state: absent
